@@ -1,7 +1,9 @@
 {
-  "name": "pie-svg-webpack4",
-  "version": "0.1.0",
-  "private": true,
+  "name": "pie-svg",
+  "version": "2.0.0",
+  "private": false,
+  "license": "MIT",
+  "main": "dist/vue-extend-component.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -29,6 +31,9 @@
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
-  }
+    "vue-template-compiler": "^2.6.11",
+    "optimize-css-assets-webpack-plugin": "^5.0.3"
+  },
+  "bugs": {},
+  "repository": {}
 }
