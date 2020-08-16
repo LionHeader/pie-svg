@@ -3,9 +3,6 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var webpackProdConfig = config => {
   if (process.env.NODE_ENV === 'production') {
-    // config.output = {
-    //   filename: ''
-    // }
     config.plugins.push(
       new TerserPlugin({
         terserOptions: {

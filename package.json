@@ -35,5 +35,8 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3"
   },
   "bugs": {},
-  "repository": {}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LionHeader/pie-svg.git"
+  }
 }

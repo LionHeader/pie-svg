@@ -26,15 +26,12 @@
 </template>
 
 <script>
-import PieSvg from '../lib/pie-svg/PieSvg'
+// import PieSvg from '../../packages/pie-svg/PieSvg'
 
 export default {
   name: 'PieSvgDemo',
   components: {
-    PieSvg
-  },
-  data () {
-    return {}
+    // PieSvg
   }
 }
 </script>
