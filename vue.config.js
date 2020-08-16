@@ -24,20 +24,6 @@ module.exports = {
     host: hostInfo.address(),
     port: 2020,
     open: true,
-    proxy: {
-      // target: 'targetHost',
-      // changeOrigin: true,
-      // pathRewrite: {
-      //   '^dev': '/'
-      // }
-    },
     clientLogLevel: 'warning'
-  },
-  css: {
-    // loaderOptions: {
-    //   sass: {
-    //     prependData: '@import "@/assets/scss/public.scss";' // 新版sass-loader
-    //   }
-    // }
   }
 }
