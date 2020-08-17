@@ -1,7 +1,7 @@
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-var webpackProdConfig = config => {
+const webpackProdConfig = config => {
   if (process.env.NODE_ENV === 'production') {
     config.plugins.push(
       new TerserPlugin({
