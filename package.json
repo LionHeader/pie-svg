@@ -3,11 +3,11 @@
   "version": "2.0.0",
   "private": false,
   "license": "MIT",
-  "main": "lib/pie-svg.min.js",
+  "main": "lib/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "pkg": "vue-cli-service build --mode pkg",
+    "pkg": "vue-cli-service build --report --mode pkg",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "lib": "vue-cli-service build --target lib --name pie-svg --dest lib packages/index.js"

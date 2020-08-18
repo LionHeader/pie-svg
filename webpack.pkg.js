@@ -1,4 +1,6 @@
 // const path = require('path')
+const TerserPlugin = require('terser-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   outputDir: 'lib',
@@ -8,13 +10,32 @@ module.exports = {
   productionSourceMap: false,
   configureWebpack: {
     entry: {
-      index: 'E:\\npm-package\\pie-svg\\packages\\index.js'
+      index: './packages/index.js'
     },
     output: {
       libraryExport: 'default',
       libraryTarget: 'umd',
-      filename: 'pie-svg.min.js'
-    }
+      library: 'vueExtend',
+      filename: 'index.js',
+      umdNamedDefine: true // 若使用export default导出的，则需要配置该项值，方可打包之后按需加载
+    },
+    plugins: [
+      new TerserPlugin({
+        terserOptions: {
+          ecma: undefined,
+          warnings: false,
+          parse: {},
+          compress: {
+            drop_console: true,
+            drop_debugger: false,
+            pure_funcs: ['console.log'] // 移除console
+          }
+        }
+      }),
+      new OptimizeCSSPlugin({
+        cssProcessorOptions: { safe: true }
+      })
+    ]
   },
   chainWebpack: config => {
     config.optimization.delete('splitChunks')

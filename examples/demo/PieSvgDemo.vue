@@ -1,6 +1,6 @@
 <template>
   <div class="pie-svg-demo">
-    <h1>Pie Svg demo Examples</h1>
+    <h1>Pie Svg Examples</h1>
     <div>
       <h2>1. 不同百分比的环形进度样式</h2>
       <div class="pie-svg-examples">
@@ -26,13 +26,8 @@
 </template>
 
 <script>
-// import PieSvg from '../../packages/pie-svg/PieSvg'
-
 export default {
-  name: 'PieSvgDemo',
-  components: {
-    // PieSvg
-  }
+  name: 'PieSvgDemo'
 }
 </script>
 

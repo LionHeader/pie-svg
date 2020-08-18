@@ -20,8 +20,3 @@ export default {
   install, // 必须导出install才可以使用Use
   ...components
 }
-
-// 输出各个组件，用于按需引入
-export {
-  PieSvg
-}
