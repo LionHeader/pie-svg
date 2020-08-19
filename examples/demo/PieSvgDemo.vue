@@ -1,6 +1,6 @@
 <template>
   <div class="pie-svg-demo">
-    <h1>Pie Svg Examples - {{new Date()}} 自动构建页面</h1>
+    <h1>Pie Svg Examples - {{new Date()}}</h1>
     <div>
       <h2>1. 不同百分比的环形进度样式</h2>
       <div class="pie-svg-examples">
@@ -22,6 +22,7 @@
         </pie-svg>
       </div>
     </div>
+    <em>(该页面根据github actions 自动打包部署生成)</em>
   </div>
 </template>
 
