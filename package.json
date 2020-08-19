@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Custom Vue component library.",
   "private": false,
+  "author": "xianchao.he",
   "license": "MIT",
   "main": "lib/index.js",
   "homepage": "https://lionheader.github.io/pie-svg/",
