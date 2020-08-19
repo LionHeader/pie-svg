@@ -5,13 +5,13 @@
   "private": false,
   "license": "MIT",
   "main": "lib/index.js",
+  "homepage": "https://lionheader.github.io/pie-svg/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "pkg": "vue-cli-service build --report --mode pkg",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "lib": "vue-cli-service build --target lib --name pie-svg --dest lib packages/index.js"
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^3.6.5",
