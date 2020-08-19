@@ -14,7 +14,12 @@ jobs: # 触发事件后所需要执行的任务
       uses: actions/checkout@master # checkout使用的action库及库版本
 
     - name: Get npm cache
-      uses: actions/npm-cache@master
+      uses: actions/cache@v2
+      with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
     
     - name: Build & deploy
       uses: JamesIves/github-pages-deploy-action@releases/v2 # build & deploy使用的action库及库版本
