@@ -1,4 +1,5 @@
 const hostInfo = require('ip')
+const path = require('path')
 const webpackProdConfig = require('./webpack.prod')
 
 module.exports = {
@@ -23,6 +24,21 @@ module.exports = {
         args.limit = 10240
         return args
       })
+    if (process.env.NODE_ENV === 'test') {
+      config.merge({
+        devtool: 'eval'
+      })
+      config.module
+        .rule('istanbul')
+        .test(/\.(js|vue)$/)
+        .include
+        .add(path.resolve(__dirname, '/package'))
+        .end()
+        .use('istanbul-instrumenter-loader')
+        .loader('istanbul-instrumenter-loader')
+        .options({ esModules: true })
+        .before('babel-loader')
+    }
   },
   integrity: false,
   lintOnSave: process.env.NODE_ENV !== 'production',
