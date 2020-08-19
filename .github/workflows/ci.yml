@@ -1,23 +1,40 @@
-name: GitHub Actions Build and Deploy
+name: Build and Deploy and Publish automatically by GitHub Actions.
 
-on:
+on: # 触发的事件，支持事件字符串，也可支持事件数组
   push:
     branches:
       - release
 
-jobs:
+jobs: # 触发事件后所需要执行的任务
   build-and-deploy:
     name: deploy-to-github
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # 任务运行的系统环境
     steps:
     - name: Checkout codes from origin/release branch
-      uses: actions/checkout@master
+      uses: actions/checkout@master # checkout使用的action库及库版本
+
+    - name: Get npm cache
+      uses: actions/npm-cache@master
     
     - name: Build & deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v2
+      uses: JamesIves/github-pages-deploy-action@releases/v2 # build & deploy使用的action库及库版本
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_ADMIN_TOKEN }}
         BASE_BRANCH: release
         BRANCH: gh-pages
         FOLDER: dist
         BUILD_SCRIPT: npm install && npm run build
+
+  publish-to-npm:
+    name: publish to npm
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
