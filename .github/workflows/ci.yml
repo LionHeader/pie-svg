@@ -32,8 +32,8 @@ jobs: # 触发事件后所需要执行的任务
 
   publish-to-npm:
     name: publish to npm
-    runs-on: ubuntu-latest
     needs: build-and-deploy
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -42,4 +42,4 @@ jobs: # 触发事件后所需要执行的任务
           registry-url: https://registry.npmjs.org/
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
