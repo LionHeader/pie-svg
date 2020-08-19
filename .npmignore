@@ -1,0 +1,13 @@
+.github
+.eslintrc
+.eslintignore
+.gitignore
+.browserslistrc
+.editorconfig
+vue.config.js
+babel.config.js
+package.json
+webpack.*.js
+/demo
+/public
+/tests
