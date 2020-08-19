@@ -3,50 +3,50 @@ name: Build and Deploy and Publish automatically by GitHub Actions.
 on: # 触发的事件，支持事件字符串，也可支持事件数组
   push:
     branches:
-      - release
+      - develop
 
-jobs: # 触发事件后所需要执行的任务
-  build-and-deploy:
-    name: deploy-to-github
-    runs-on: ubuntu-latest # 任务运行的系统环境
-    steps:
-    - name: Checkout codes from origin/release branch
-      uses: actions/checkout@master # checkout使用的action库及库版本
+# jobs: # 触发事件后所需要执行的任务
+#   build-and-deploy:
+#     name: deploy-to-github
+#     runs-on: ubuntu-latest # 任务运行的系统环境
+#     steps:
+#     - name: Checkout codes from origin/release branch
+#       uses: actions/checkout@master # checkout使用的action库及库版本
 
-    - name: Get npm cache
-      uses: actions/cache@v2
-      with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+#     - name: Get npm cache
+#       uses: actions/cache@v2
+#       with:
+#           path: ~/.npm
+#           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
     
-    - name: Build & deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v2 # build & deploy使用的action库及库版本
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_ADMIN_TOKEN }}
-        BASE_BRANCH: release
-        BRANCH: gh-pages
-        FOLDER: dist
-        BUILD_SCRIPT: npm install && npm run build
+#     - name: Build & deploy
+#       uses: JamesIves/github-pages-deploy-action@releases/v2 # build & deploy使用的action库及库版本
+#       env:
+#         ACCESS_TOKEN: ${{ secrets.ACCESS_ADMIN_TOKEN }}
+#         BASE_BRANCH: release
+#         BRANCH: gh-pages
+#         FOLDER: dist
+#         BUILD_SCRIPT: npm install && npm run build
 
-  publish-to-npm:
-    name: publish to npm
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+#   publish-to-npm:
+#     name: publish to npm
+#     needs: build-and-deploy
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - uses: actions/setup-node@v1
+#         with:
+#           node-version: 12
+#           registry-url: https://registry.npmjs.org/
+#       - run: npm publish
+#         env:
+#           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-on:
-  release:
-    types: [published]
+# on:
+#   release:
+#     types: [published]
 
 jobs:
  publish-to-gpr:
