@@ -43,3 +43,25 @@ jobs: # 触发事件后所需要执行的任务
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+on:
+  release:
+    types: [published]
+
+jobs:
+ publish-to-gpr:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout release branch code
+       uses: actions/checkout@v2
+
+     - name: Use Node.js
+       uses: actions/setup-node@v1.4.2
+       with:
+         node-version: 12
+         registry-url: https://npm.pkg.github.com/
+
+     - name: Publish to GitHub Package
+       run: npm publish
+       env:
+         NODE_AUTH_TOKEN: ${{ secrets.ACCESS_ADMIN_TOKEN }}
